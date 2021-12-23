@@ -2,6 +2,7 @@
 
 :root {
   --clock-size: 50;
+  --text-color: white;
 }
 
 *,
@@ -16,8 +17,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   font-family: "Source Code Pro", monospace;
+  background: black;
 }
 
 .clock {
@@ -27,13 +29,26 @@ body {
   height: calc(var(--clock-size) * 1vw);
   border-radius: 100%;
   overflow: hidden;
+  border: 1.5px solid white;
+}
+
+.dot {
+  z-index: 500;
+  width: 1em;
+  height: 1em;
+  background: white;
+  border-radius: 999px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .number {
   position: absolute;
   left: 50%;
   top: 50%;
-  color: white;
+  color: var(--text-color);
   border-radius: 0.5em;
   height: calc(var(--clock-size) * 1vw);
   padding: 0.2em;
@@ -71,20 +86,20 @@ body {
   position: absolute;
   bottom: 50%;
   left: 50%;
-  border: 1.5px solid white;
+  border: calc(var(--clock-size) * 0.003 * 1vw) solid white;
+  background: white;
   transform-origin: bottom;
   border-radius: 5em;
   z-index: 10;
-  transform: translateX(-50%);
 }
 
 .line.hour {
   height: 30%;
 }
 .line.minute {
-  height: 40%;
+  height: 42%;
 }
 .line.seconds {
   height: 50%;
-  border: 1px solid red;
+  border: calc(var(--clock-size) * 0.001 * 1vw) solid red;
 }
