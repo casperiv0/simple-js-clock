@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500&display=swap");
+
+:root {
+  --clock-size: 50;
+}
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: "Source Code Pro", monospace;
+}
+
+.clock {
+  position: relative;
+  background: black;
+  width: calc(var(--clock-size) * 1vw);
+  height: calc(var(--clock-size) * 1vw);
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.number {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: white;
+  border-radius: 0.5em;
+  height: calc(var(--clock-size) * 1vw);
+  padding: 0.2em;
+
+  font-size: calc(var(--clock-size) / 20 * 1vw);
+}
+
+.line {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  border: 1.5px solid white;
+  transform-origin: bottom;
+  border-radius: 5em;
+  z-index: 10;
+  transform: translateX(-50%);
+}
+
+.line.hour {
+  height: 30%;
+}
+.line.minute {
+  height: 40%;
+}
+.line.seconds {
+  height: 45%;
+  border: 1px solid red;
+}
