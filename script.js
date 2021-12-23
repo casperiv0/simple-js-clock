@@ -66,13 +66,40 @@ export function generateCurrentTimeDOM() {
   }
 }
 
+export function generateSmallLinesDOM() {
+  for (let i = 1; i < 360 + 1; i++) {
+    if (i % 6 !== 0) {
+      continue;
+    }
+
+    const element = document.createElement("div");
+    const textSpan = document.createElement("p");
+
+    if (isReserved(i)) {
+      element.classList.add("reserved");
+    }
+
+    element.classList.add("small-line");
+    element.style.transform = `translate(-50%, -50%) rotate(${i}deg)`;
+
+    element.appendChild(textSpan);
+    CLOCK_ELEMENT.appendChild(element);
+  }
+}
+
 generateDOMClockNumbers();
+generateSmallLinesDOM();
 generateCurrentTimeDOM();
 
 setInterval(generateCurrentTimeDOM, 1000);
 
 function findExistingNode(id) {
   return document.getElementById(id);
+}
+
+function isReserved(i) {
+  const arr = generateLinesDegrees();
+  return arr.some((v) => i === v);
 }
 
 function applyConfig({ node, degree, id, type }) {
