@@ -104,6 +104,6 @@ function isReserved(i) {
 
 function applyConfig({ node, degree, id, type }) {
   node.classList.add("line", type);
-  node.style.rotate = `${degree}deg`;
+  node.style.transform = `rotate(${degree}deg)`;
   node.id = id;
 }
